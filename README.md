@@ -10,6 +10,7 @@ edit none of them here, and issues are disabled.
 
 | Tool | What it does | Homebrew |
 |---|---|---|
+| `rembuk` | Voice-and-whiteboard practice sessions with coding agents | `brew install lugassawan/bengkel/rembuk` |
 | `roster` | Manage and launch coding-agent profiles | `brew install lugassawan/bengkel/roster` |
 | `tradercuan` | Read brokers through macOS Accessibility and run the profile-scoped Trading Lab | `brew install lugassawan/bengkel/tradercuan` |
 
@@ -23,6 +24,10 @@ This installs the latest stable release of `<tool>` into `~/.local/bin` after
 checking its sha256 against the release's `checksums.txt`. Pass a version to pin
 one (`... | sh -s -- <tool> 0.2.0`), and set `BINDIR` to install elsewhere. It
 works for any tool with a release, even one that is not on the tap yet.
+
+After the install, a tool that can fetch what it needs is asked to: for `rembuk`,
+`init --deps --yes` installs whisper.cpp through Homebrew without a prompt. Set
+`BENGKEL_NO_INIT=1` to skip that step.
 
 ## Homebrew
 

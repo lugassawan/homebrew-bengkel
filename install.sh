@@ -17,6 +17,11 @@
 #   BINDIR        destination (default: $HOME/.local/bin)
 #   BENGKEL_API   releases API base (tests point this at file:// fixtures)
 #   BENGKEL_DL    release download base (same)
+#   BENGKEL_NO_INIT  any non-empty value skips the tool's own `init --deps --yes` step (empty does not)
+#
+# After the install, a tool whose `init --help` lists the --deps flag is run as `<tool> init --deps --yes`, which
+# installs what the tool needs to work (rembuk's speech dependencies, through Homebrew). That can install packages,
+# so there is the opt-out above; a failure is a warning, never a failed install.
 #
 # This file is published as install.sh on the mirror's main branch by
 # scripts/publish.sh. The body is one function, called last, so a truncated
@@ -66,17 +71,18 @@ latest_version() {
 }
 
 # valid_tool <name>, valid_version <X.Y.Z[-pre]>: whole-string checks. grep
-# alone matches per line, so a value with a good first line would pass.
+# alone matches per line, so a value with a good first line would pass. The
+# letters are spelled out: a range like a-z can take capitals in some locales.
 valid_tool() {
   case $1 in
-    '' | [!a-z]* | *[!a-z0-9]*) return 1 ;;
+    '' | [!abcdefghijklmnopqrstuvwxyz]* | *[!abcdefghijklmnopqrstuvwxyz0123456789]*) return 1 ;;
   esac
 }
 
 valid_version() {
   # The character set excludes a newline, so grep then sees a single line.
   case $1 in
-    '' | *[!0-9A-Za-z.-]*) return 1 ;;
+    '' | *[!0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-]*) return 1 ;;
   esac
   printf '%s\n' "$1" | grep -Eq '^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$'
 }
@@ -198,6 +204,17 @@ main() {
   # The install is done; a tool without a working `version` is not a failure.
   "$dest/$tool" version ||
     printf 'warning: installed %s, but "%s version" failed\n' "$dest/$tool" "$tool" >&2
+
+  # A tool that can fetch what it needs does so now, so that one command is all a person runs: `init --deps` installs
+  # rembuk's speech dependencies. Only a tool whose `init --help` lists --deps has it. The tool is already installed,
+  # so a failure here (no Homebrew, no network) is a warning that says how to retry, not a failed install.
+  if [ -n "${BENGKEL_NO_INIT:-}" ]; then
+    :
+  elif "$dest/$tool" init --help < /dev/null 2> /dev/null | grep -Eq -e '--deps($|[^[:alnum:]_-])'; then
+    # stdin is /dev/null: under `curl | sh` it is the script itself, which the tool must not read.
+    "$dest/$tool" init --deps --yes < /dev/null ||
+      printf 'warning: "%s init --deps" failed; run it again to finish setting up %s\n' "$tool" "$tool" >&2
+  fi
 }
 
 main "$@"
