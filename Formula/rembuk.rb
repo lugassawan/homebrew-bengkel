@@ -6,7 +6,7 @@ class Rembuk < Formula
   homepage "https://github.com/lugassawan/homebrew-bengkel"
   version "0.1.0"
 
-  depends_on "whisper-cpp"
+  depends_on "whisper.cpp"
 
   on_macos do
     on_arm do
