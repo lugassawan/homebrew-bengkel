@@ -4,18 +4,18 @@
 class Rembuk < Formula
   desc "Voice-and-whiteboard practice sessions with coding agents"
   homepage "https://github.com/lugassawan/homebrew-bengkel"
-  version "0.1.0"
+  version "0.2.0"
 
   depends_on "whisper.cpp"
 
   on_macos do
     on_arm do
-      url "https://github.com/lugassawan/homebrew-bengkel/releases/download/rembuk/v0.1.0/rembuk_0.1.0_darwin_arm64.tar.gz"
-      sha256 "bba221d21e8806ef271ec8980036b106708880560ebd6117727dca39b5d9d6e3"
+      url "https://github.com/lugassawan/homebrew-bengkel/releases/download/rembuk/v0.2.0/rembuk_0.2.0_darwin_arm64.tar.gz"
+      sha256 "5e2fe99f520c763b221b6589d6d5cba2cf5dd1f1651f0cfe7bac43626061da70"
     end
     on_intel do
-      url "https://github.com/lugassawan/homebrew-bengkel/releases/download/rembuk/v0.1.0/rembuk_0.1.0_darwin_amd64.tar.gz"
-      sha256 "978288024cc5d262d1586d9fc88ed22037c1534169b1e4bf6d0472635e9216d5"
+      url "https://github.com/lugassawan/homebrew-bengkel/releases/download/rembuk/v0.2.0/rembuk_0.2.0_darwin_amd64.tar.gz"
+      sha256 "9c0fdc91d91afa33e3105ddf2de9d1077ed751438a808df069d62cb5a948fa2f"
     end
   end
 
