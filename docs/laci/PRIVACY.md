@@ -1,8 +1,8 @@
-# laci privacy note
+# laci — Privacy policy
 
 laci is a command-line tool that searches and edits Google Drive, Docs, Sheets and Slides across the Google accounts
-you sign in with. It runs on your Mac. This page is the home page and privacy policy that the OAuth consent screen
-of your own Google Cloud project points to.
+you sign in with. It runs on your Mac. This page is both the application home page and the privacy policy that the
+OAuth consent screen of your own Google Cloud project links to.
 
 ## Whose project it is
 
