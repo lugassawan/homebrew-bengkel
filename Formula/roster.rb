@@ -4,16 +4,16 @@
 class Roster < Formula
   desc "Manage and launch coding-agent profiles"
   homepage "https://github.com/lugassawan/homebrew-bengkel"
-  version "0.2.0"
+  version "0.3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/lugassawan/homebrew-bengkel/releases/download/roster/v0.2.0/roster_0.2.0_darwin_arm64.tar.gz"
-      sha256 "fd25970e1244eedcd838755149c7991c9c59489ee3fbf5fdf7987f1d6dc82247"
+      url "https://github.com/lugassawan/homebrew-bengkel/releases/download/roster/v0.3.0/roster_0.3.0_darwin_arm64.tar.gz"
+      sha256 "3de0930d9f24930be8ebfdbd99d8151e13a4b179bc1c5e710e205fa80196ae95"
     end
     on_intel do
-      url "https://github.com/lugassawan/homebrew-bengkel/releases/download/roster/v0.2.0/roster_0.2.0_darwin_amd64.tar.gz"
-      sha256 "2b2b58d6dbb5428593bae20abfa34a7a2a0dd2adcc78edc902fca80cd3dcdbfe"
+      url "https://github.com/lugassawan/homebrew-bengkel/releases/download/roster/v0.3.0/roster_0.3.0_darwin_amd64.tar.gz"
+      sha256 "f21bd8ae291ed62e9a5603e622fda108c03b9d935d9581cafb09c72478a6c0b0"
     end
   end
 
