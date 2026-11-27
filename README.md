@@ -10,6 +10,7 @@ edit none of them here, and issues are disabled.
 
 | Tool | What it does | Homebrew |
 |---|---|---|
+| `laci` | Search and edit Google Drive, Docs, Sheets and Slides across several accounts | `brew install lugassawan/bengkel/laci` |
 | `rembuk` | Voice-and-whiteboard practice sessions with coding agents | `brew install lugassawan/bengkel/rembuk` |
 | `roster` | Manage and launch coding-agent profiles | `brew install lugassawan/bengkel/roster` |
 | `tradercuan` | Read brokers through macOS Accessibility and run the profile-scoped Trading Lab | `brew install lugassawan/bengkel/tradercuan` |
